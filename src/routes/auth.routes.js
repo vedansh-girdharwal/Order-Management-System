@@ -17,6 +17,5 @@ const {authenticate} = require("../middlewares/auth.middleware");
 router.post('/register', validateRequest(registerSchema), registerUser);
 router.post('/login', validateRequest(loginSchema), loginUser);
 router.post('/logout', authenticate,logoutUser);
-router.post('/refresh-token', validateRequest(refreshTokenSchema), refreshAccessToken);
 
 module.exports = router;

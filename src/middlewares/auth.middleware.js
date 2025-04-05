@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { AppError } = require('../handlers/error.handler');
 const User = require('../models/user.model');
+const config = require('../../config');
 
 const authenticate = async (req, res, next) => {
   try {
@@ -13,7 +14,7 @@ const authenticate = async (req, res, next) => {
     const token = authHeader.split(' ')[1];
 
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, config.get('jwt.secret'));
 
     // Check if user still exists
     const user = await User.findById(decoded.userId);

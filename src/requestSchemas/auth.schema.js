@@ -42,16 +42,7 @@ const loginSchema = {
   }
 };
 
-const refreshTokenSchema = {
-  refreshToken: {
-    type: "string",
-    empty: false,
-    label: "refresh token"
-  }
-};
-
 module.exports = {
   registerSchema,
   loginSchema,
-  refreshTokenSchema
 };

@@ -5,22 +5,15 @@ const {createAudit} = require('./analytics.service');
 const {EntityType} = require('../enums/entity.enum');
 const {Actions} = require("../enums/action.enum");
 const config = require("../../config");
+const {redis} = require("../connections/redis.connection");
+const moment = require("moment");
 
 const generateTokens = (userId) => {
-    const accessToken = jwt.sign(
+    return jwt.sign(
         {userId},
         config.get("jwt.secret"),
         {expiresIn: config.get("jwt.expiry_time")}
     );
-
-    const refreshToken = jwt.sign(
-        {userId},
-        config.get("jwt.secret"),
-        {expiresIn: config.get("jwt.expiry_time")}
-    );
-
-    refreshTokens.add(refreshToken);
-    return {accessToken, refreshToken};
 };
 
 const register = async (userData) => {
@@ -52,40 +45,33 @@ const login = async ({email, password}) => {
     if (!user || !(await user.comparePassword(password))) {
         throw new AppError('Invalid email or password', 401);
     }
-
-    const tokens = generateTokens(user._id);
-    return {...tokens, user: {...user.toObject(), password: undefined}};
+    const isUserLoggedIn = await redis.get(email);
+    if (isUserLoggedIn && isLessThan24HoursOld(isUserLoggedIn.createdAt)) {
+        return { message: "User already logged in. Please logout first.", data: null };
+    }
+    const token = generateTokens(user._id);
+    const saveTokenToRedis = await redis.set(email, JSON.stringify({token, createdAt: new Date().toISOString()}));
+    delete user.password;
+    return {message: "User logged in successfully", data: {token, user}};
 };
 
-const logout = async (refreshToken) => {
-    if (!refreshTokens.has(refreshToken)) {
-        throw new AppError('Invalid refresh token', 401);
-    }
-    refreshTokens.delete(refreshToken);
+const isLessThan24HoursOld = (isoDate) => {
+    const date = moment(isoDate);
+    const now = moment();
+    const twentyFourHoursAgo = now.subtract(24, 'hours');
+    return date.isAfter(twentyFourHoursAgo);
 };
 
-const refresh = async (refreshToken) => {
-    if (!refreshTokens.has(refreshToken)) {
-        throw new AppError('Invalid refresh token', 401);
+const logout = async (req) => {
+    const redisSession = await redis.get(req.user.email);
+    if (!redisSession) {
+        throw new AppError('User has not logged in. Please log in first', 401);
     }
-
-    try {
-        const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
-        const accessToken = jwt.sign(
-            {userId: decoded.userId},
-            process.env.JWT_SECRET,
-            {expiresIn: process.env.JWT_ACCESS_EXPIRES_IN}
-        );
-        return {accessToken};
-    } catch (error) {
-        refreshTokens.delete(refreshToken);
-        throw new AppError('Invalid refresh token', 401);
-    }
+    redis.del(req.user.email);
 };
 
 module.exports = {
     register,
     login,
     logout,
-    refresh,
 }
