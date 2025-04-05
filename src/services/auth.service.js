@@ -47,7 +47,7 @@ const login = async ({email, password}) => {
     }
     const isUserLoggedIn = await redis.get(email);
     if (isUserLoggedIn && isLessThan24HoursOld(isUserLoggedIn.createdAt)) {
-        return { message: "User already logged in. Please logout first.", data: null };
+        return {message: "User already logged in. Please logout first.", data: null};
     }
     const token = generateTokens(user._id);
     const saveTokenToRedis = await redis.set(email, JSON.stringify({token, createdAt: new Date().toISOString()}));
