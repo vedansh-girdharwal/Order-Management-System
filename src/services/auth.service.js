@@ -57,8 +57,7 @@ const login = async ({email, password}) => {
 
 const isLessThan24HoursOld = (isoDate) => {
     const date = moment(isoDate);
-    const now = moment();
-    const twentyFourHoursAgo = now.subtract(24, 'hours');
+    const twentyFourHoursAgo = moment().subtract(24, 'hours');
     return date.isAfter(twentyFourHoursAgo);
 };
 
@@ -74,4 +73,5 @@ module.exports = {
     register,
     login,
     logout,
+    isLessThan24HoursOld
 }

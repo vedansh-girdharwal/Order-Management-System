@@ -1,5 +1,4 @@
 const Order = require('../models/order.model');
-const User = require('../models/user.model');
 const Product = require('../models/product.model');
 const Audit = require('../models/audit.model');
 const {AppError} = require('../handlers/error.handler');
