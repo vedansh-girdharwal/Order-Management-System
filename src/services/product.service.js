@@ -23,7 +23,8 @@ const createProduct = async (productData, vendorEmail) => {
     return product;
 };
 
-const updateProduct = async (productId, updateData, vendorId, vendorEmail) => {
+const updateProduct = async (productId, updateData, vendor) => {
+    const {vendorId, vendorEmail, vendorName} = vendor;
     const product = await Product.findOne({_id: productId, vendorId});
     if (!product) {
         throw new AppError('Product not found or unauthorized', 404);

@@ -1,4 +1,5 @@
 const Order = require('../models/order.model');
+const User = require('../models/user.model');
 const Product = require('../models/product.model');
 const Audit = require('../models/audit.model');
 const {AppError} = require('../handlers/error.handler');
@@ -13,30 +14,31 @@ const getVendorRevenue = async () => {
                 createdAt: {$gte: thirtyDaysAgo}
             }
         },
+        {   $unwind: "$subOrders"   },
         {
-            $unwind: '$subOrders'
-        },
-        {
-            $group: {
-                _id: '$subOrders.vendorId',
-                totalRevenue: {$sum: '$subOrders.totalAmount'}
+            $match: {
+                "subOrders.status": "completed"
             }
         },
         {
-            $lookup: {
-                from: 'users',
-                localField: '_id',
-                foreignField: '_id',
-                as: 'vendor'
+            $group: {
+                _id: {
+                    vendorId: "$subOrders.vendorId",
+                    vendorName: "$subOrders.vendorName"
+                },
+                totalRevenue: { $sum: "$subOrders.totalAmount" }
             }
         },
         {
             $project: {
-                vendor: {$arrayElemAt: ['$vendor.name', 0]},
+                _id: 0,
+                vendorId: "$_id.vendorId",
+                vendorName: "$_id.vendorName",
                 totalRevenue: 1
             }
         }
     ]);
+
 };
 
 const getTopProducts = async () => {
@@ -45,23 +47,20 @@ const getTopProducts = async () => {
         {$unwind: '$subOrders.items'},
         {
             $group: {
-                _id: '$subOrders.items.product',
+                _id: {
+                    productId: '$subOrders.items.product',
+                    productName: '$subOrders.items.productName',
+                },
                 totalSales: {$sum: '$subOrders.items.quantity'}
             }
         },
         {$sort: {totalSales: -1}},
         {$limit: 5},
         {
-            $lookup: {
-                from: 'products',
-                localField: '_id',
-                foreignField: '_id',
-                as: 'product'
-            }
-        },
-        {
             $project: {
-                product: {$arrayElemAt: ['$product.name', 0]},
+                _id: 0,
+                productName: "$_id.productName",
+                productId: "$_id.productId",
                 totalSales: 1
             }
         }

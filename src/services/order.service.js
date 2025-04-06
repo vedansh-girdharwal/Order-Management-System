@@ -24,11 +24,14 @@ const createOrder = async (orderData) => {
             }
 
             const vendorId = product.vendorId.toString();
+            const vendorName = product.vendorName;
             if (!groupedItems[vendorId]) {
                 groupedItems[vendorId] = [];
             }
             groupedItems[vendorId].push({
                 product: product._id,
+                productName: product.name,
+                vendorName,
                 quantity: item.quantity,
                 price: product.price
             });
@@ -39,6 +42,7 @@ const createOrder = async (orderData) => {
 
         const subOrders = Object.entries(groupedItems).map(([vendorId, items]) => ({
             vendorId,
+            vendorName: items[0].vendorName,
             items,
             totalAmount: items.reduce((sum, item) => sum + (item.price * item.quantity), 0)
         }));

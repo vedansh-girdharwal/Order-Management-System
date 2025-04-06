@@ -31,6 +31,11 @@ const productSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
+    vendorName: {
+        type: String,
+        ref: "User",
+        required: true,
+    },
     category: {
         type: String,
         required: true,

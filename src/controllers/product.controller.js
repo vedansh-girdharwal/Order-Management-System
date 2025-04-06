@@ -5,7 +5,8 @@ const createProduct = async (req, res, next) => {
         const product = await productService.createProduct({
             ...req.body,
             alias: req.body.name.replace(/\s+/g, '_').toLowerCase(),
-            vendorId: req.user._id
+            vendorId: req.user._id,
+            vendorName: req.user.name,
         }, req.user.email);
         res.status(201).json({
             status: 'success',
@@ -21,8 +22,11 @@ const updateProduct = async (req, res, next) => {
         const product = await productService.updateProduct(
             req.params.id,
             req.body,
-            req.user._id,
-            req.user.email
+            {
+                vendorId: req.user._id,
+                vendorName: req.user.name,
+                vendorEmail: req.user.email
+            }
         );
         res.status(200).json({
             status: 'success',
