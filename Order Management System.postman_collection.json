@@ -1,0 +1,802 @@
+{
+	"info": {
+		"_postman_id": "8633c69a-0285-462f-b037-b2ba9feada27",
+		"name": "Order Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24769131"
+	},
+	"item": [
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODMxMTYsImV4cCI6MTc0Mzk2OTUxNn0.SoCedZOfrPNVbzzjvRySbRueQW-mS5rnwQ5WPq0J8z8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Iphone17\",\n    \"price\": 120000,\n    \"stock\": 10,\n    \"category\": \"Mobile\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/8b0430d6-9db8-4eec-ad4f-67d8dc06e7d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"8b0430d6-9db8-4eec-ad4f-67d8dc06e7d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODMxMTYsImV4cCI6MTc0Mzk2OTUxNn0.SoCedZOfrPNVbzzjvRySbRueQW-mS5rnwQ5WPq0J8z8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Iphone17\",\n    \"price\": 120000,\n    \"stock\": 10,\n    \"category\": \"Mobile\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/8b0430d6-9db8-4eec-ad4f-67d8dc06e7d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"8b0430d6-9db8-4eec-ad4f-67d8dc06e7d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODMxMTYsImV4cCI6MTc0Mzk2OTUxNn0.SoCedZOfrPNVbzzjvRySbRueQW-mS5rnwQ5WPq0J8z8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODUzNDksImV4cCI6MTc0Mzk3MTc0OX0.Yja2yOBG2yYmrcGI0R8U8l0nXc3jchrMuTBGalu7QcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Iphone16\",\n    \"price\": 120000,\n    \"stock\": 10,\n    \"category\": \"Mobile\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4NzkwOTAsImV4cCI6MTc0Mzk2NTQ5MH0.Q4Db3CvJotdkvWcQQHh5uDPL89qeqYGmftW8qM48Z90",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"vedansh77@gmail.com\",\n    \"password\": \"Welcome@000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"devansh77@gmail.com\",\n    \"password\": \"Welcome@000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Admin\",\n    \"email\": \"admin@gmail.com\",\n    \"password\": \"P@ssw0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "get customer order list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5YjFkZmFlZC02MTkzLTRlMzQtYWYwYS1jNjk4NDk2ODhhM2MiLCJpYXQiOjE3NDM4ODU4MzksImV4cCI6MTc0Mzk3MjIzOX0.-SC2ysA0-ElpFfXjP3OkTsHydEkOdzbG_WhN_9LutGA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/my-orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"my-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI5YjFkZmFlZC02MTkzLTRlMzQtYWYwYS1jNjk4NDk2ODhhM2MiLCJpYXQiOjE3NDM4ODU4MzksImV4cCI6MTc0Mzk3MjIzOX0.-SC2ysA0-ElpFfXjP3OkTsHydEkOdzbG_WhN_9LutGA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"items\": [\n        {\n            \"productId\": \"042d81e2-3571-4cc3-8a36-6d504a6a670a\",\n            \"quantity\": 9\n        },\n        {\n            \"productId\": \"04f3e8bb-881b-4dbe-a91d-6ef2ddd96119\",\n            \"quantity\": 10\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODUzNDksImV4cCI6MTc0Mzk3MTc0OX0.Yja2yOBG2yYmrcGI0R8U8l0nXc3jchrMuTBGalu7QcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/a5c2637f-ecec-4190-b261-d546c44d8be1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"a5c2637f-ecec-4190-b261-d546c44d8be1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vendor order",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODUzNDksImV4cCI6MTc0Mzk3MTc0OX0.Yja2yOBG2yYmrcGI0R8U8l0nXc3jchrMuTBGalu7QcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/vendor-orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"vendor-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update vendor order status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODUzNDksImV4cCI6MTc0Mzk3MTc0OX0.Yja2yOBG2yYmrcGI0R8U8l0nXc3jchrMuTBGalu7QcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\":\"completed\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/vendor-order/9413b59b-89ca-456a-b356-56fd222878c7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"vendor-order",
+								"9413b59b-89ca-456a-b356-56fd222878c7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "analytics",
+			"item": [
+				{
+					"name": "get vendor revenue",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODJiZWE0Yy1iN2Q3LTQ4M2YtYWUzMi02MjczYmM4OWY5MmUiLCJpYXQiOjE3NDM5MjYzNTAsImV4cCI6MTc0NDAxMjc1MH0.YqtnRGKFZQ4AKeiBAiOflo_OOXU_MEoSn3Thf0hKiEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/analytics/vendor-revenue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"analytics",
+								"vendor-revenue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get top 5 products",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODJiZWE0Yy1iN2Q3LTQ4M2YtYWUzMi02MjczYmM4OWY5MmUiLCJpYXQiOjE3NDM5MjYzNTAsImV4cCI6MTc0NDAxMjc1MH0.YqtnRGKFZQ4AKeiBAiOflo_OOXU_MEoSn3Thf0hKiEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/analytics/top-products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"analytics",
+								"top-products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get average order value",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ODJiZWE0Yy1iN2Q3LTQ4M2YtYWUzMi02MjczYmM4OWY5MmUiLCJpYXQiOjE3NDM5MjYzNTAsImV4cCI6MTc0NDAxMjc1MH0.YqtnRGKFZQ4AKeiBAiOflo_OOXU_MEoSn3Thf0hKiEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/analytics/average-order-value",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"analytics",
+								"average-order-value"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vendor daily sales",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODUzNDksImV4cCI6MTc0Mzk3MTc0OX0.Yja2yOBG2yYmrcGI0R8U8l0nXc3jchrMuTBGalu7QcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/analytics/daily-sales",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"analytics",
+								"daily-sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vendor low stock items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkNGQzZTAyZC00YTFiLTRiNGItYWI0MC00ZmJkNjg0NTNkNzMiLCJpYXQiOjE3NDM4ODUzNDksImV4cCI6MTc0Mzk3MTc0OX0.Yja2yOBG2yYmrcGI0R8U8l0nXc3jchrMuTBGalu7QcY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/analytics/low-stock-items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"analytics",
+								"low-stock-items"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
